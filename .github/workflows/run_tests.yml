@@ -26,6 +26,8 @@ jobs:
         path: 'requirements.txt'
     - name: Update dashboard
       run: jupyter nbconvert --no-input --execute api_test.ipynb --to html --template=material --output=docs/index.html
+      env:
+        TROVE_API_KEY: ${{ secrets.TROVE_API_KEY }}
     - name: Commit and push if it changed
       run: |-
         git config user.name 'Automated'
